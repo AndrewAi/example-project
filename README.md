@@ -17,6 +17,9 @@ In our early discussions, we excluded option 3 as it would be too difficult to c
 That left option 1 and 2.
 We chose 2 after some consideration, as we were more interested in the idea.
 
+The project was guided by the following excerpt from the project instructions:
+>You are required to develop a single-page web application(SPA) written in the programming language Python using the Flask framework. You must devise an idea for a web application, write the software, write documentation explaining how the application works, and write a short user guide for it.
+
 
 ##### Team Members
 We elected to complete this project as a team.
@@ -47,3 +50,11 @@ Once these prerequisites are installed, the application can be run locally:
 $ python webapp.py
 ```
 Once the application is running, it can be accessed by pointing your browser at http://127.0.0.1:4000/ .
+
+##### Architecture
+This web application runs in [Python 3](https://www.python.org) using the [Flask](http://flask.pocoo.org/) web micro-framework and uses SQLite as a database.
+Python 3 and Flask were requirements for the project, but SQLite was selected by the team.
+We chose SQLite as it is easy to use and does not require much setup to get the web application up and running.
+
+
+**Lecturer's note:** this is a very short README example. Much more information would be required here for a high grade.
