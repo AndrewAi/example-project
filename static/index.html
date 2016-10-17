@@ -17,13 +17,18 @@
   <body>
 	<div class="container">
 		<!-- Adapted from: http://v4-alpha.getbootstrap.com/components/forms/#textual-inputs -->
-		<form action="/name" method="POST">
+		<form action="/perms" method="GET">
 		  <div class="form-group">
-			<label for="name">Name</label>
-			<input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
-			<small id="emailHelp" class="form-text text-muted">The server will say hello to you, hopefully.</small>
+			<label for="name">Input</label>
+			<input type="text" class="form-control" name="userinput" id="userinput" placeholder="Enter a string">
+			<small id="emailHelp" class="form-text text-muted">The server will generate all permutations of the string for you.</small>
 		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<form>
+		  <div class="form-group">
+			<label for="serveroutput">Server result</label>
+			<textarea class="form-control" disabled id="serveroutput" rows="10" placeholder="Please submit a string above."></textarea>
 		</form>
 	</div>
 
@@ -31,5 +36,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+  
+	<script>
+		$("#submit").click(function(e) {
+			e.preventDefault();
+			
+			$.get("/perms?userinput=" + encodeURIComponent($("#userinput").val()), function(data) {
+				$("#serveroutput").text(data);
+			});
+		});
+	</script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
