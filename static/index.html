@@ -15,20 +15,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
   </head>
   <body>
+	
+	<!-- https://v4-alpha.getbootstrap.com/components/navbar/ -->
+	<nav class="navbar navbar-dark bg-inverse">
+		<div class="container">
+    	<a class="navbar-brand" href="#">Permutations</a>
+  	</div>
+	</nav>
+
 	<div class="container">
+		<br />
 		<!-- Adapted from: http://v4-alpha.getbootstrap.com/components/forms/#textual-inputs -->
-		<form action="/perms" method="GET">
+		<form>
 		  <div class="form-group">
-			<label for="name">Input</label>
+			<label for="name">User input</label>
 			<input type="text" class="form-control" name="userinput" id="userinput" placeholder="Enter a string">
 			<small id="emailHelp" class="form-text text-muted">The server will generate all permutations of the string for you.</small>
 		  </div>
 		  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 		</form>
+		<br />
 		<form>
 		  <div class="form-group">
 			<label for="serveroutput">Server result</label>
-			<textarea class="form-control" disabled id="serveroutput" rows="10" placeholder="Please submit a string above."></textarea>
+			<textarea class="form-control" id="serveroutput" rows="10" placeholder="Please submit an input above."  readonly></textarea>
 		</form>
 	</div>
 
@@ -41,8 +51,10 @@
 		$("#submit").click(function(e) {
 			e.preventDefault();
 			
-			$.get("/perms?userinput=" + encodeURIComponent($("#userinput").val()), function(data) {
-				$("#serveroutput").text(data);
+			data = {userinput: $("#userinput").val()}
+			$.post("/perms", data, function(resbody)
+			{
+				$("#serveroutput").text(resbody);
 			});
 		});
 	</script>

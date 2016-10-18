@@ -13,9 +13,9 @@ app = fl.Flask(__name__)
 def root():
     return app.send_static_file('index.html')
 
-@app.route("/perms")
+@app.route("/perms", methods=["GET", "POST"])
 def perms():
-	perms = [''.join(p) for p in it.permutations(fl.request.args.get("userinput")]
+	perms = [''.join(p) for p in it.permutations(fl.request.values["userinput"])]
 	return '\n'.join(perms)
 
 if __name__ == "__main__":
