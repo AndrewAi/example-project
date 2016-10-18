@@ -52,21 +52,10 @@
 			e.preventDefault();
 			
 			data = {userinput: $("#userinput").val()}
-			$.post("/perms", data, function(resbody)
-			{
+			$.post("/perms", data, function(resbody){
 				$("#serveroutput").text(resbody);
 			});
 		});
 	</script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
